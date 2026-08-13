@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-const DefaultAPIURL = "https://api.authfi.app"
+const DefaultAPIURL = "https://platform.authfi.io"
 
 // Client is the AuthFI API client used by the Terraform provider.
 type Client struct {
