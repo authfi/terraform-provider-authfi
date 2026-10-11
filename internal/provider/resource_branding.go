@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/queflyhq/terraform-provider-authfi/internal/client"
+	"github.com/authfi/terraform-provider-authfi/internal/client"
 )
 
 var _ resource.Resource = &BrandingResource{}

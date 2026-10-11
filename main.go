@@ -6,7 +6,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/queflyhq/terraform-provider-authfi/internal/provider"
+	"github.com/authfi/terraform-provider-authfi/internal/provider"
 )
 
 var version = "dev"
@@ -17,7 +17,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/queflyhq/authfi",
+		Address: "registry.terraform.io/authfi/authfi",
 		Debug:   debug,
 	}
 

@@ -8,7 +8,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/queflyhq/terraform-provider-authfi/internal/client"
+	"github.com/authfi/terraform-provider-authfi/internal/client"
 )
 
 var _ resource.Resource = &ApplicationResource{}
