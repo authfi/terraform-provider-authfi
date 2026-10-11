@@ -4,7 +4,7 @@
 terraform {
   required_providers {
     authfi = {
-      source = "queflyhq/authfi"
+      source = "authfi/authfi"
     }
     google = {
       source = "hashicorp/google"

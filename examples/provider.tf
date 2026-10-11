@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     authfi = {
-      source  = "queflyhq/authfi"
+      source  = "authfi/authfi"
       version = "~> 0.1"
     }
   }

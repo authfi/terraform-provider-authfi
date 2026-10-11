@@ -1,4 +1,4 @@
-module github.com/queflyhq/terraform-provider-authfi
+module github.com/authfi/terraform-provider-authfi
 
 go 1.22.0
 
