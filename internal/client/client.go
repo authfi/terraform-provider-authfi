@@ -16,6 +16,8 @@ type Client struct {
 	APIURL     string
 	APIKey     string
 	Tenant     string
+	// GraphQLURL overrides the BFF GraphQL endpoint (default https://<tenant>.authfi.io/graphql).
+	GraphQLURL string
 	HTTPClient *http.Client
 }
 

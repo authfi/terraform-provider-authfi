@@ -20,7 +20,8 @@ type AuthFIProvider struct {
 
 type AuthFIProviderModel struct {
 	APIKey types.String `tfsdk:"api_key"`
-	Tenant types.String `tfsdk:"tenant"`
+	Tenant     types.String `tfsdk:"tenant"`
+	GraphQLURL types.String `tfsdk:"graphql_url"`
 }
 
 func New(version string) func() provider.Provider {
@@ -45,6 +46,10 @@ func (p *AuthFIProvider) Schema(_ context.Context, _ provider.SchemaRequest, res
 			},
 			"tenant": schema.StringAttribute{
 				Description: "Tenant slug (e.g. 'ayush'). Can also be set via AUTHFI_TENANT env var.",
+				Optional:    true,
+			},
+			"graphql_url": schema.StringAttribute{
+				Description: "GraphQL endpoint of the project (for example https://acme.np.authfi.io/graphql). Defaults to https://<tenant>.authfi.io/graphql. Can also be set via AUTHFI_GRAPHQL_URL env var. Used by the AI provider resources.",
 				Optional:    true,
 			},
 		},
@@ -77,6 +82,10 @@ func (p *AuthFIProvider) Configure(ctx context.Context, req provider.ConfigureRe
 	}
 
 	c := client.New(apiKey, tenant)
+	c.GraphQLURL = os.Getenv("AUTHFI_GRAPHQL_URL")
+	if !config.GraphQLURL.IsNull() {
+		c.GraphQLURL = config.GraphQLURL.ValueString()
+	}
 	resp.DataSourceData = c
 	resp.ResourceData = c
 }
@@ -100,6 +109,8 @@ func (p *AuthFIProvider) Resources(_ context.Context) []func() resource.Resource
 		NewCloudMappingResource,
 		NewSCIMTargetResource,
 		NewDomainResource,
+		NewAnthropicProviderResource,
+		NewAnthropicProviderFederationResource,
 	}
 }
 
